@@ -10,7 +10,10 @@
     // ~ PUBLISH CONFIG
     // -----------------------------------------------------------------
     const MADE_FOR_KIDS = false; // true / false;
-    const VISIBILITY = 'Public'; // 'Public' / 'Private' / 'Unlisted'
+    
+	//Change your Videos VISIBILITY HERE:
+	const VISIBILITY = 'Unlisted'; // 'Public' / 'Private' / 'Unlisted'
+	
     // -----------------------------------------------------------------
     // ~ SORT PLAYLIST CONFIG
     // -----------------------------------------------------------------
@@ -44,6 +47,18 @@
     // ---------------------------------
     const TIMEOUT_STEP_MS = 20;
     const DEFAULT_ELEMENT_TIMEOUT_MS = 10000;
+	
+	function humanDelay(minMs, maxMs) {
+    const delay = Math.floor(
+        Math.random() * (maxMs - minMs + 1)
+    ) + minMs;
+
+    debugLog(`human delay: ${delay}ms`);
+    return sleep(delay);
+}
+
+	
+	
     function debugLog(...args) {
         if (!DEBUG_MODE) {
             return;
@@ -101,7 +116,9 @@
     const SAVE_BUTTON_SELECTOR = '#done-button';
     const SUCCESS_ELEMENT_SELECTOR = 'ytcp-video-thumbnail-with-info';
     const DIALOG_SELECTOR = 'ytcp-dialog.ytcp-video-share-dialog > tp-yt-paper-dialog:nth-child(1)';
-    const DIALOG_CLOSE_BUTTON_SELECTOR = 'tp-yt-iron-icon';
+    //const DIALOG_CLOSE_BUTTON_SELECTOR = 'tp-yt-iron-icon';
+	//Close Button now changed
+	const DIALOG_CLOSE_BUTTON_SELECTOR = 'button[aria-label="Close"]';
 
     class SuccessDialog {
         constructor(raw) {
@@ -114,7 +131,7 @@
 
         async close() {
             click(await this.closeDialogButton());
-            await sleep(50);
+            await sleep(400,900);
             debugLog('closed');
         }
     }
@@ -137,7 +154,7 @@
         async setVisibility() {
             click(await this.visibilityRadioButton());
             debugLog(`visibility set to ${VISIBILITY}`);
-            await sleep(50);
+            await sleep(400,900);
         }
 
         async saveButton() {
@@ -175,7 +192,7 @@
 
         async selectMadeForKids() {
             click(await this.madeForKidsPaperButton());
-            await sleep(50);
+            await sleep(400,900);
             debugLog(`"Made for kids" set as ${MADE_FOR_KIDS}`);
         }
 
@@ -185,10 +202,10 @@
 
         async goToVisibility() {
             debugLog('going to Visibility');
-            await sleep(50);
+            await sleep(400,900);
             click(await this.visibilityStepper());
             const visibility = new VisibilityModal(this.raw);
-            await sleep(50);
+            await sleep(400,900);
             await waitForElement(VISIBILITY_PAPER_BUTTONS_SELECTOR, visibility.raw);
             return visibility;
         }
@@ -331,4 +348,3 @@
 
 
 })();
-
