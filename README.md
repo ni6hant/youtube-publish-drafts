@@ -12,13 +12,14 @@ But, just to be safe, I **_did add simulated human random delays in the code_** 
 
 # Steps:
 1. Open your YouTube Studio Videos/Shorts/Livestreams page.
-2. Filter the videos to only show Drafts.
-3. Scroll to the bottom and change the number of videos per page if required.
-4. Open Developer Mode(F12) on your browser and find where the console window is. This will come handy later.
-5. Open a notepad window and copy the entire contents of youtube-publish-drafts.js and paste it into the Console.
-6. In this notepad find this line and change it whatever you prefer:
+2. Fix Copyright/Shorts Policy videos as they will stop the script from proceeding.
+3. Filter the videos to only show Drafts.
+4. Scroll to the bottom and change the number of videos per page if required.
+5. Open Developer Mode(F12) on your browser and find where the console window is. This will come handy later.
+6. Open a notepad window and copy the entire contents of youtube-publish-drafts.js and paste it into the Console.
+7. In this notepad find this line and change it whatever you prefer:
    const VISIBILITY = 'Unlisted'; // 'Public' / 'Private' / 'Unlisted'
-7. Copy the entire code and paste it into the console from step 5 and press Enter Key.
-8. Don't interrupt the process.
+8. Copy the entire code and paste it into the console from step 5 and press Enter Key.
+9. Don't interrupt the process.
 
 
